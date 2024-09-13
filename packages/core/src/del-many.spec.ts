@@ -1,5 +1,5 @@
 import { createStorage, createStore, getMany, setMany, delMany } from "./main"
-import { setMany$, getMany$, delMany$ } from "./driver/memory"
+import { setMany$, getMany$, delMany$ } from "./drivers/memory"
 
 describe("del-many", () => {
   const store = createStorage(

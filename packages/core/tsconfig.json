@@ -8,6 +8,7 @@
     "declaration": true,
     "declarationDir": "types",
     "emitDeclarationOnly": true,
+    "moduleResolution": "Bundler",
     "paths": {
       "src/*": ["./src/*"]
     },

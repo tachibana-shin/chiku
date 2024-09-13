@@ -31,7 +31,7 @@ List:
 
 ```typescript
 import { createStorage, createStore, get, assert } from "chiku"
-import { get$, set$, del$, getMany$, setMany$, delMany$, update$ } from "chiku/driver/indexeddb"
+import { get$, set$, del$, getMany$, setMany$, delMany$, update$ } from "chiku/drivers/indexeddb"
 
 const storage = createStorage(
   createStore<{
@@ -41,6 +41,11 @@ const storage = createStorage(
   { get$, set$, del$, getMany$, setMany$, delMany$, update$ }
 )
 ```
+
+List drivers:
+- `chiku/drivers/indexeddb` - Driver for indexedDB storage
+- `chiku/drivers/local-storage` - Driver for localStorage storage
+- `chiku/drivers/memory` - Driver for memory storage
 
 #### get(storage, key: string)
 Function `get` value from `storage`
@@ -198,7 +203,7 @@ This function has great power, it can track data even if changes occur in `Worke
 - **`key: Key`**  
   The key in the `kv` map of the storage object that you want to watch for changes.
 
-- **`fn: (newValue: RS["kv"][Key] | undefined) => void`**  
+- **`fn: (newValue: () => RS["kv"][Key] | undefined) => void`**  
   A callback function that gets executed whenever the value of the watched key changes. The `newValue` passed to the function is either the updated value or `undefined` if the value was removed or did not exist.
 
 - **`options?: WatchOptions`**  
@@ -214,8 +219,8 @@ This function has great power, it can track data even if changes occur in `Worke
 #### Example:
 
 ```typescript
-const stopWatching = watch(storage, "counter", (newValue) => {
-  console.log("Updated user preferences:", newValue)
+const stopWatching = watch(storage, "counter", await (newValue) => {
+  console.log("Updated user preferences:", async newValue())
 })
 
 // Later on, you can stop watching by calling the returned function

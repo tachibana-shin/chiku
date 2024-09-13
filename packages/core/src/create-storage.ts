@@ -30,7 +30,7 @@ export interface RStorage<
   // biome-ignore lint/complexity/noBannedTypes: <explanation>
   fb: Sync extends true ? globalThis.Set<Function> : undefined
   // biome-ignore lint/complexity/noBannedTypes: <explanation>
-  lb: Sync extends true ? globalThis.Set<Function> : undefined
+  lb: globalThis.Set<Function>
 
   kv: KV
 }
@@ -57,8 +57,8 @@ export function createStorage<
     ;(storage as RStorage<true, any>).bc = new BroadcastChannel(storage.id)
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     ;(storage as RStorage<true, any>).fb = new Set()
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    ;(storage as RStorage<true, any>).lb = new Set()
   }
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  ;(storage as RStorage<true, any>).lb = new Set()
   return storage
 }

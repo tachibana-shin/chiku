@@ -64,7 +64,7 @@ export function watch<
     if (event.data.key === key) {
       if ("value" in event.data) {
         // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-        fn(event.data.value as unknown as any)
+        fn(() => event.data.value as unknown as any)
       } else {
         fn(() => get(storage, key))
       }

@@ -4,8 +4,24 @@
   "description": "(蓄) is a lightweight storage management library designed for handling simple storage operations with multiple storage types, such as IndexedDB, localStorage, and sessionStorage",
   "license": "MIT",
   "author": "Tachibana Shin <tachibshin@duck.com>",
-  "module": "dist/main.js",
+  "module": "dist/main.mjs",
   "types": "dist/main.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./drivers/": "./dist/drivers/",
+    "./dist/": "./dist/"
+  },
+  "typesVersions": {
+    "*": {
+      "drivers/*": [
+        "dist/drivers/*"
+      ]
+    }
+  },
   "scripts": {
     "build": "tsup"
   },
@@ -20,5 +36,8 @@
     "vite": "^5.4.4",
     "vite-plugin-dts": "^4.2.1",
     "vitest": "^2.1.0"
+  },
+  "dependencies": {
+    "idb-keyval": "^6.2.1"
   }
 }
