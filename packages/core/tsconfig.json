@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["src/*.ts"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "skipLibCheck": true,
+    "declaration": true,
+    "declarationDir": "types",
+    "emitDeclarationOnly": true,
+    "paths": {
+      "src/*": ["./src/*"]
+    },
+    "types": ["vitest/globals"]
+  }
+}

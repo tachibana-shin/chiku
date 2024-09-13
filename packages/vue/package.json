@@ -1,0 +1,22 @@
+{
+  "name": "@chiku/vue",
+  "description": "**@chiku/vue** is a Vue.js plugin designed to seamlessly integrate the powerful storage capabilities of the **Chiku** (蓄) library into Vue applications.",
+  "license": "MIT",
+  "author": "Tachibana Shin <tachibshin@duck.com>",
+  "scripts": {
+    "build": "vite build"
+  },
+  "homepage": "https://github.com/tachibana-shin/chiku/blob/main/packages/vue",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tachibana-shin/chiku.git"
+  },
+  "devDependencies": {
+    "vite": "^5.4.4",
+    "vitest": "^2.1.0"
+  },
+  "dependencies": {
+    "vue": "^3.5.4",
+    "chiku": "workspace:*"
+  }
+}

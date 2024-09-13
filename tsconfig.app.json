@@ -1,0 +1,15 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "include": ["env.d.ts", "lib/**/*", "lib/**/*.vue", "lib/**/*"],
+  "exclude": ["lib/**/__tests__/*"],
+  "compilerOptions": {
+    "composite": true,
+    "target": "ESNext",
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["lib/*"]
+    }
+  }
+}

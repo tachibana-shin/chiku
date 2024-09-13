@@ -1,0 +1,22 @@
+{
+  "name": "chiku",
+  "description": "(蓄) is a lightweight storage management library designed for handling simple storage operations with multiple storage types, such as IndexedDB, localStorage, and sessionStorage",
+  "license": "MIT",
+  "author": "Tachibana Shin <tachibshin@duck.com>",
+  "module": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "scripts": {
+    "build": "vite build"
+  },
+  "homepage": "https://github.com/tachibana-shin/chiku/blob/main/packages/core",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tachibana-shin/chiku.git"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "vite": "^5.4.4",
+    "vite-plugin-dts": "^4.2.1",
+    "vitest": "^2.1.0"
+  }
+}
