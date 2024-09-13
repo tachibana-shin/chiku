@@ -6,7 +6,7 @@
   "workspaces": ["packages/*"],
   "scripts": {
     "build": "bun run --filter './packages/*' build",
-    "release": "bumpp && bun run --filter './packages/*' publish"
+    "release": "bumpp package.json packages/*/package.json && bun run --filter './packages/*' publish"
   },
   "dependencies": {},
   "devDependencies": {
