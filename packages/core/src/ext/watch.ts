@@ -1,3 +1,4 @@
+import { get } from "src/get"
 import type { RStorage } from "../create-storage"
 
 export interface WatchOptions<Local extends boolean> {
@@ -11,9 +12,15 @@ export function watch<
 >(
   storage: RS,
   key: Key,
-  fn: (newValue: RS["kv"][Key] | undefined) => void,
+  fn: (
+    newValue:
+      | (RS["kv"][Key] extends string | number | boolean | undefined | null
+          ? RS["kv"][Key]
+          : () => RS["kv"][Key])
+      | undefined
+  ) => void,
   options: WatchOptions<true>
-) : () => void
+): () => void
 export function watch<
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   RS extends RStorage<true, any, any, any, any, any, any, any, any>,
@@ -22,7 +29,13 @@ export function watch<
 >(
   storage: RS,
   key: Key,
-  fn: (newValue: RS["kv"][Key] | undefined) => void,
+  fn: (
+    newValue:
+      | (RS["kv"][Key] extends string | number | boolean | undefined | null
+          ? RS["kv"][Key]
+          : () => RS["kv"][Key])
+      | undefined
+  ) => void,
   options?: WatchOptions<Local>
 ): () => void
 export function watch<
@@ -33,7 +46,13 @@ export function watch<
 >(
   storage: RS,
   key: Key,
-  fn: (newValue: RS["kv"][Key] | undefined) => void,
+  fn: (
+    newValue:
+      | (RS["kv"][Key] extends string | number | boolean | undefined | null
+          ? RS["kv"][Key]
+          : () => RS["kv"][Key])
+      | undefined
+  ) => void,
   options?: WatchOptions<Local>
 ) {
   const handler = (
@@ -43,7 +62,12 @@ export function watch<
     }>
   ) => {
     if (event.data.key === key) {
-      fn(event.data.value)
+      if ("value" in event.data) {
+        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+        fn(event.data.value as unknown as any)
+      } else {
+        fn(() => get(storage, key))
+      }
     }
   }
 
