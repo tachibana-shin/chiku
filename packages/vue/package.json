@@ -8,7 +8,8 @@
   "types": "dist/main.d.ts",
   "scripts": {
     "build": "tsup",
-    "prepublish": "bun run build"
+    "prepublish": "bun run build",
+    "publish": "pnpm publish"
   },
   "homepage": "https://github.com/tachibana-shin/chiku/blob/main/packages/vue",
   "repository": {

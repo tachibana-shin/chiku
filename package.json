@@ -5,10 +5,10 @@
   "type": "module",
   "workspaces": ["packages/*"],
   "scripts": {
-    "build": "bun run --filter './packages/*' build"
+    "build": "bun run --filter './packages/*' build",
+    "release": "bumpp && bun run --filter './packages/*' publish"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@playwright/test": "^1.44.1",
     "@rushstack/eslint-patch": "^1.8.0",
@@ -22,6 +22,7 @@
     "@vue/eslint-config-typescript": "^13.0.0",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.5.1",
+    "bumpp": "^9.5.2",
     "eslint": "^8.57.0",
     "eslint-plugin-playwright": "^1.6.2",
     "eslint-plugin-vue": "^9.23.0",
