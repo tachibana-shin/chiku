@@ -23,7 +23,8 @@
     }
   },
   "scripts": {
-    "build": "tsup"
+    "build": "tsup",
+    "prepublish": "bun run build"
   },
   "homepage": "https://github.com/tachibana-shin/chiku/blob/main/packages/core",
   "repository": {
